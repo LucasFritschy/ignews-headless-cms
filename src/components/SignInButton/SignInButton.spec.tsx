@@ -14,7 +14,9 @@ describe('SignInButton component', () => {
       <SignInButton />
     )
 
-    expect(screen.getByText('Sign in with Github')).toBeInTheDocument()
+    expect(screen.getByRole('button', {
+      name: /sign in with github/i
+    })).toBeInTheDocument()
   })
 })
 
@@ -31,6 +33,8 @@ describe('SignInButton component', () => {
       <SignInButton />
     )
 
-    expect(screen.getByText('John Doe')).toBeInTheDocument()
+    expect(screen.getByRole('button', {
+      name: /john doe/i
+    })).toBeInTheDocument()
   })
 })

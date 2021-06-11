@@ -25,8 +25,12 @@ describe('Header component', () => {
       <Header />
     )
 
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Posts')).toBeInTheDocument()
+    expect(screen.getByRole('link', {
+      name: /home/i
+    })).toBeInTheDocument()
+    expect(screen.getByRole('link', {
+      name: /posts/i
+    })).toBeInTheDocument()
 
   })
 })

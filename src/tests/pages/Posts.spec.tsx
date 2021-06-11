@@ -15,7 +15,7 @@ describe('Posts', () => {
     render(
       <Posts posts={posts} />
     )
-    expect(screen.getByText("My New Post")).toBeInTheDocument()
+    expect(screen.getByText(/my new post/i)).toBeInTheDocument()
   })
 
   it('loads initial data', async () => {

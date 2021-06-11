@@ -21,7 +21,8 @@ describe('Home', () => {
     render(
       <Home product={product} />
     )
-    expect(screen.getByText("for $9.90 month")).toBeInTheDocument()
+
+    expect(screen.getByText(/for \$9\.90 month/i)).toBeInTheDocument()
   })
 
   it('loads initial data', async () => {

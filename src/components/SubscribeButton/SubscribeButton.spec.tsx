@@ -15,7 +15,10 @@ describe('SignInButton component', () => {
     render(
       <SubscribeButton />
     )
-    expect(screen.getByText('Subscribe Now')).toBeInTheDocument()
+
+    expect(screen.getByRole('button', {
+      name: /subscribe now/i
+    })).toBeInTheDocument()
   })
 
   it('redirects user to sign in when not authenticated', () => {
@@ -62,6 +65,5 @@ describe('SignInButton component', () => {
 
     expect(pushMock).toHaveBeenCalled()
   })
-
 })
 

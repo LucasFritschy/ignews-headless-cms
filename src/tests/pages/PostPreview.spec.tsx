@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { mocked } from 'ts-jest/utils'
 
-import PostPreview, { getStaticPaths, getStaticProps } from '../../pages/posts/preview/[slug]'
+import PostPreview, { getStaticProps } from '../../pages/posts/preview/[slug]'
 import { getPrismicClient } from '../../services/prismic'
 
 jest.mock('next-auth/client')
@@ -21,9 +21,12 @@ describe('Post preview page', () => {
     render(
       <PostPreview post={post} />
     )
-    expect(screen.getByText("My New Post")).toBeInTheDocument()
-    expect(screen.getByText("Post excerpt")).toBeInTheDocument()
-    expect(screen.getByText("Wanna continue reading?")).toBeInTheDocument()
+
+    expect(screen.getByRole('heading', {
+      name: /my new post/i
+    })).toBeInTheDocument()
+    expect(screen.getByText(/post excerpt/i)).toBeInTheDocument()
+    expect(screen.getByText(/wanna continue reading\?/i)).toBeInTheDocument()
   })
 
   it('redirects user to full post when user is subscribed', async () => {

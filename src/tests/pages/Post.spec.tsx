@@ -16,8 +16,11 @@ describe('Post page', () => {
     render(
       <Post post={post} />
     )
-    expect(screen.getByText("My New Post")).toBeInTheDocument()
-    expect(screen.getByText("Post excerpt")).toBeInTheDocument()
+
+    expect(screen.getByRole('heading', {
+      name: /my new post/i
+    })).toBeInTheDocument()
+    expect(screen.getByText(/post excerpt/i)).toBeInTheDocument()
   })
 
   it('redirects user if no subscription is found', async () => {
