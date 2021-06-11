@@ -30,9 +30,6 @@ describe('SignInButton component', () => {
     render(
       <SignInButton />
     )
-    render(
-      <SignInButton />
-    )
 
     expect(screen.getByText('John Doe')).toBeInTheDocument()
   })
